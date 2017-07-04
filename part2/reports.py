@@ -51,7 +51,25 @@ def get_game(file_name, title):
 
 def count_grouped_by_genre(file_name):
     game_list = open_file(file_name)
-    pass
+    return_dict = {}
+    for i in range(len(game_list)):
+        if game_list[i][3] not in return_dict:
+            return_dict[game_list[i][3]] = 1
+        else:
+            return_dict[game_list[i][3]] += 1
+    return return_dict
 def get_date_ordered(file_name):
     game_list = open_file(file_name)
-    pass
+    return_list = []
+    game_list = sorted(game_list, key=lambda game_list: game_list[2])
+    game_list.reverse()
+    for a in range(len(game_list)):
+        for i in range(len(game_list)-1):
+            if game_list[i][2] == game_list[i+1][2]:
+                if game_list[i][0] > game_list[i+1][0]:
+                    temp = game_list[i]
+                    game_list[i] = game_list[i+1]
+                    game_list[i+1] = temp
+    for i in range(len(game_list)):
+        return_list.append(game_list[i][0])
+    return return_list
