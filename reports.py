@@ -38,6 +38,7 @@ def get_line_number_by_title(file_name, title):
     for i in range(len(game_list)):
         if title == game_list[i][0]:
             return i+1
+    raise ValueError
 
 def sort_abc(file_name):
     game_list = open_file(file_name)
@@ -75,5 +76,7 @@ def when_was_top_sold_fps(file_name):
     for i in range(len(game_list)):
         if game_list[i][3] == 'First-person shooter':
             fps.append(game_list[i])
+    if fps == []:
+        raise ValueError
     fps = sorted(fps, key=lambda fps: float(fps[1]))
     return int(fps[-1][2])
