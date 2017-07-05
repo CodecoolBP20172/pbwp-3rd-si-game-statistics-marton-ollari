@@ -48,6 +48,7 @@ def get_game(file_name, title):
             return_list.extend([game_list[i][0],float(game_list[i][1]),
             int(game_list[i][2]),game_list[i][3],game_list[i][4]])
             return return_list
+    raise ValueError
 
 def count_grouped_by_genre(file_name):
     game_list = open_file(file_name)
