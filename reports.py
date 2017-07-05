@@ -1,5 +1,7 @@
 
 # Report functions
+
+
 def open_file(file_name):
     with open(file_name) as f:
         game_list = f.read().splitlines()
@@ -7,9 +9,11 @@ def open_file(file_name):
             game_list[i] = game_list[i].split('\t')
         return game_list
 
+
 def count_games(file_name):
     game_list = open_file(file_name)
     return (len(game_list))
+
 
 def decide(file_name, year):
     game_list = open_file(file_name)
@@ -18,12 +22,14 @@ def decide(file_name, year):
             return True
     return False
 
+
 def get_latest(file_name):
     game_list = open_file(file_name)
     game_list = sorted(game_list, key=lambda game_list: game_list[2])
     for i in range(len(game_list)):
         if game_list[-1][2] in game_list[i]:
             return game_list[i][0]
+
 
 def count_by_genre(file_name, genre):
     game_list = open_file(file_name)
@@ -33,12 +39,14 @@ def count_by_genre(file_name, genre):
             count += 1
     return count
 
+
 def get_line_number_by_title(file_name, title):
     game_list = open_file(file_name)
     for i in range(len(game_list)):
         if title == game_list[i][0]:
             return i+1
     raise ValueError
+
 
 def sort_abc(file_name):
     game_list = open_file(file_name)
@@ -52,6 +60,7 @@ def sort_abc(file_name):
                 names[i+1] = names[i]
                 names[i] = temp
     return names
+
 
 def get_genres(file_name):
     game_list = open_file(file_name)
